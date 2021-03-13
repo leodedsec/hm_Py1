@@ -30,14 +30,14 @@ class Reviewers(Mentor):
 
 
 def main():
-    print("""
-    1 - Внести информацию о студенте
-    2 - Проверить работу студента
-    3 - Поставить оценку лектору за лекцию
-    q - Exit
+    userInput=""
+    while userInput!="q":
+        print("""
+                1 - Внести информацию о студенте
+                2 - Проверить работу студента
+                3 - Поставить оценку лектору за лекцию
+                q - Exit
     """)
-    userInput=True
-    while userInput==True:
         userInput=input("Выбор:")
         if userInput=="1":
             name=input("Имя студента:")
@@ -55,15 +55,15 @@ def main():
             surname=input("Фамилия учителя:")
             course=input("Курс на проверку:")
             grade=int(input("Оценка за курс:"))
-            reviewers=Reviewers(pupil,name,surname,course,grade)
+            reviewers=Reviewers(name,surname)
+            reviewers.rate_hw(pupil,course,grade)
             reviewers.courses_attached.append(course)
             print(f"Информация об учителе:\n\
                     Имя: {name}\n\
                     Фамилия: {surname}\n\
-                    За курс {course} была поставлена оценка {grade}")
+                    За курс {course} была поставлена оценка {pupil.grades[course]}")
         elif userInput=="q":
             print("Exit...")
-            userInput==False
     print(pupil.name,pupil.surname)
     print()
 
