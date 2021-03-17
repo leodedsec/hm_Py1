@@ -71,7 +71,12 @@ class Lecturer(Mentor):
     def __str__(self):
         return "Имя: "+self.name+"\n"+"Фамилия: "+self.surname+"\n"+\
         "Средняя оценка за лекции: "+str(sum(self.grade_lecturer)/len(self.grade_lecturer))
-    grade_lecturer=[]
+    self.grade_lecturer=[]
+    def __lt__(self, other):
+        if sum(self.grade_lecturer)/len(self.grade_lecturer)<sum(other.grade_lecturer)/len(grade_lecturer):
+            print("<")
+        else:
+            print(">")
     def addCourses(self):
         get_course=input("Введите название курса:")
         self.courses_attached.append(get_course)
