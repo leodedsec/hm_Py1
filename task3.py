@@ -10,3 +10,13 @@
 
 grades={"a":4,"b":6}
 print(sum(grades.values())/len(grades))
+
+
+class Test():
+    def kek(self):
+        get=input()
+        self.grades=[]
+        self.grades.append(get)
+a=Test()
+a.kek()
+print(a.grades)

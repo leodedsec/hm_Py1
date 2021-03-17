@@ -12,10 +12,7 @@ class Student:
 Курсы в процессе изучения: {self.courses_in_progress}\n\
 Завершенные курсы: {self.finished_courses}"
     def __lt__(self, other):
-        if sum(self.globalGrades)/len(self.globalGrades)<sum(other.globalGrades)/len(other.globalGrades):
-            print("<")
-        else:
-            print(">")
+        return sum(self.globalGrades)/len(self.globalGrades)<sum(other.globalGrades)/len(other.globalGrades)
     def __init__(self, name, surname, gender):
         self.name = name
         self.surname = surname
@@ -49,6 +46,7 @@ class Mentor:
         self.name = name
         self.surname = surname
         self.courses_attached = [] #Список доступных курсов на проверку
+        self.grade_lecturer=[]
 
 #Проверяющие ДЗ
 class Reviewers(Mentor):
@@ -71,29 +69,28 @@ class Lecturer(Mentor):
     def __str__(self):
         return "Имя: "+self.name+"\n"+"Фамилия: "+self.surname+"\n"+\
         "Средняя оценка за лекции: "+str(sum(self.grade_lecturer)/len(self.grade_lecturer))
-    self.grade_lecturer=[]
     def __lt__(self, other):
-        if sum(self.grade_lecturer)/len(self.grade_lecturer)<sum(other.grade_lecturer)/len(grade_lecturer):
-            print("<")
-        else:
-            print(">")
+        return sum(self.grade_lecturer)/len(self.grade_lecturer) < sum(other.grade_lecturer)/len(other.grade_lecturer)
     def addCourses(self):
         get_course=input("Введите название курса:")
         self.courses_attached.append(get_course)
 
 
 
-##lector1=Lecturer("O","N") #создали лектора
-##lector1.addCourses() #добавили ему курс
-##
-##print()
+lector1=Lecturer("O","N") #создали лектора
+lector1.addCourses() #добавили ему курс
+lector2=Lecturer("O","M")
+lector2.addCourses()
+
+print()
 
 pupil1=Student("Azat","Abdrashitov","M") #создали студента
 pupil1.courses_in_progress.append("GIT") #добавили курс студенту
 pupil1.courses_in_progress.append("Python") #добавили курс студенту
 pupil1.finished_courses.append("English") # добавили завершенный курс
-##pupil1.gradeLecturer(lector1) #оценка 1
-##pupil1.gradeLecturer(lector1) #оценка 2
+pupil1.gradeLecturer(lector1) #оценка 1
+pupil1.gradeLecturer(lector1) #оценка 2
+pupil1.gradeLecturer(lector2)
 
 pupil2=Student("Leo","Messi","M")
 pupil2.courses_in_progress.append("GIT") #добавили курс студенту
@@ -115,4 +112,16 @@ homework1.rate_hw(pupil2,"GIT",3)
 ##print(homework1)
 print(pupil1)
 print(pupil2)
-print(pupil1<pupil2)
+a=pupil2<pupil1
+if a==False:
+    print(">")
+else:
+    print("<")
+
+b=lector1<lector2
+if b==False:
+    print(">")
+else:
+    print("<")
+
+
