@@ -1,4 +1,3 @@
-
 with open("recipes.txt", encoding="utf8") as file:
     cook_book={}
     file=file.readlines() #общий список со всеми рецептами из txt
@@ -18,8 +17,8 @@ with open("recipes.txt", encoding="utf8") as file:
                 ingrDict={}
             oneList.clear() #очищаем список, чтобы работать со след.рецептом
 
-##for i,j in cook_book.items():
-##    print(i,j)
+
+#print(cook_book)
 
 
 def get_shop_list_by_dishes(*dishes, person_count=1):
@@ -29,11 +28,15 @@ def get_shop_list_by_dishes(*dishes, person_count=1):
         for j in ingr:
             name=j["ingredient_name"]
             mea=j["measure"]
-            value=j["quantity"]*person_count
+            if name not in result:
+                value=j["quantity"]*person_count
+            else:
+                value+=j["quantity"]*person_count+person_count
             result[name]={"measure":mea,"quantity":value}
     print(result)
 
-get_shop_list_by_dishes("Запеченный картофель","Омлет", person_count=2)
+
+get_shop_list_by_dishes("Омлет","Фахитос", person_count=2)
 
 
 
