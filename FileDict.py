@@ -19,15 +19,15 @@ def lookTxt():
                     cook_book[key]+=[ingrDict]
                     ingrDict={}
                 oneList.clear() #очищаем список, чтобы работать со след.рецептом
+    return cook_book
 
-
-#print(cook_book)
+#print(lookTxt())
 
 
 def get_shop_list_by_dishes(*dishes, person_count=1):
     result={}
     for i in dishes:
-        ingr=cook_book[i]
+        ingr=lookTxt()[i]
         for j in ingr:
             name=j["ingredient_name"]
             mea=j["measure"]
